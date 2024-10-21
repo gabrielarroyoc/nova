@@ -1,0 +1,2 @@
+import { SVGProps } from 'react';
+
