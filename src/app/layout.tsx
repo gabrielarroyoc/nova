@@ -15,7 +15,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <ClerkProvider>
       <html lang="pt-BR" suppressHydrationWarning>
         <body>
+          <div className="h-screen flex justify-center items-center">
           {children}
+          </div>
         </body>
     </html>
     </ClerkProvider>
