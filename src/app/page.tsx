@@ -1,10 +1,15 @@
-import { Sidebar, SidebarContent } from "@/components/ui/sidebar"
+// import { Sidebar, SidebarContent } from "@/components/ui/sidebar"
+// import { UserButton } from "@clerk/nextjs";
+
+
 const Home = () => {
   return (
     <>
-      <Sidebar>
+    <h1>Hello World</h1>
+      {/* <Sidebar>
         <SidebarContent />
-      </Sidebar>
+        <UserButton afterSignOutUrl="/"/>
+      </Sidebar> */}
     </>
   );
 };

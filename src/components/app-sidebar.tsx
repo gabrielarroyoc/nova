@@ -1,4 +1,4 @@
-import { Calendar, ChevronUp, Home, Settings, User2 } from "lucide-react"
+import { Calendar, ChevronUp, Home, User2 } from "lucide-react"
  
 import {
   Sidebar,
@@ -13,7 +13,6 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
-import { DropdownMenuIcon } from "@radix-ui/react-icons"
 
  
 // Menu items.
@@ -28,26 +27,22 @@ const items = [
     url: "#",
     icon: Calendar,
   },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
 ]
  
 export function AppSidebar() {
   return (
-<>
+    <>
     <Sidebar className="bg-zinc-700 ">
    
       <SidebarContent className="text-white">
         <SidebarGroup>
-          <SidebarGroupLabel className="">Application</SidebarGroupLabel>
+          <SidebarGroupLabel className="">Nova</SidebarGroupLabel>
+          <SidebarHeader />
           <SidebarGroupContent>
-            <SidebarMenu>
+          <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton >
+                  <SidebarMenuButton asChild>
                     <a href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
@@ -58,22 +53,20 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-        <SidebarHeader />
         <SidebarContent />
         <SidebarFooter>
             <SidebarMenu>
             <SidebarMenuItem>
-
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <SidebarMenuButton>
                     <User2 /> Username
-                    <ChevronUp className="" />
+                    <ChevronUp className="ml-auto" />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
-                  side="bottom"
-                  className=""
+                  side="top"
+                  className="w-[--radix-popper-anchor-width]"
                 >
                   <DropdownMenuItem>
                     <span>Account</span>

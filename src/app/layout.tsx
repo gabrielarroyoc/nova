@@ -1,29 +1,23 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
+// import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+// import { AppSidebar } from "@/components/app-sidebar";
+import { ClerkProvider } from "@clerk/nextjs"
 
 export const metadata: Metadata = {
   title: "Nova",
   description: "Seu guia para um futuro financeiro brilhante.",
 };
 
-export default function RootLayout({  }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-br">
-      <body>
-        <div>
-        <SidebarProvider>
-          <AppSidebar />
-          <main>
-          </main>
-        </SidebarProvider>
-        </div>
-      </body>
+    <ClerkProvider>
+      <html lang="pt-BR" suppressHydrationWarning>
+        <body>
+          {children}
+        </body>
     </html>
+    </ClerkProvider>
   );
 }
-  
-
-
