@@ -1,19 +1,17 @@
-import { Calendar, ChevronUp, Home, User2 } from "lucide-react"
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
  
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
-
+import { UserButton } from "@clerk/nextjs"
+import { ThemeSwitch } from "./theme-switch"
  
 // Menu items.
 const items = [
@@ -23,23 +21,35 @@ const items = [
     icon: Home,
   },
   {
+    title: "Inbox",
+    url: "#",
+    icon: Inbox,
+  },
+  {
     title: "Calendar",
     url: "#",
     icon: Calendar,
+  },
+  {
+    title: "Search",
+    url: "#",
+    icon: Search,
+  },
+  {
+    title: "Settings",
+    url: "#",
+    icon: Settings,
   },
 ]
  
 export function AppSidebar() {
   return (
-    <>
-    <Sidebar className="bg-zinc-700 ">
-   
-      <SidebarContent className="text-white">
+    <Sidebar>
+      <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="">Nova</SidebarGroupLabel>
-          <SidebarHeader />
+          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
-          <SidebarMenu>
+            <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
@@ -48,42 +58,15 @@ export function AppSidebar() {
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
+                   
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
+            <UserButton />
+                  <ThemeSwitch /> 
           </SidebarGroupContent>
         </SidebarGroup>
-        <SidebarContent />
-        <SidebarFooter>
-            <SidebarMenu>
-            <SidebarMenuItem>
-            <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton>
-                    <User2 /> Username
-                    <ChevronUp className="ml-auto" />
-                  </SidebarMenuButton>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  side="top"
-                  className="w-[--radix-popper-anchor-width]"
-                >
-                  <DropdownMenuItem>
-                    <span>Account</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <span>Billing</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <span>Sign out</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-                </DropdownMenu>
-            </SidebarMenuItem>
-            </SidebarMenu>
-        </SidebarFooter>
       </SidebarContent>
     </Sidebar>
-   </>
   )
 }

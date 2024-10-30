@@ -1,5 +1,11 @@
 import { SignUp } from '@clerk/nextjs'
+import { NextPage } from 'next'
 
-export default function Page() {
-  return <SignUp />
+
+const Page: NextPage = () =>  {
+  return (
+    <SignUp />
+  )
 }
+
+export default Page
